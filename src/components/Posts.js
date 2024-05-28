@@ -27,10 +27,11 @@ const Posts = (props) => {
             <CloseIcon />
           </button>
         </div>
-        <div className=" flex justify-center items-center flex-col gap-2">
+        <div className=" flex justify-center items-center flex-col gap-3">
           {posts.map((data, index) => {
             return (
               <PostsDetails
+                key={index}
                 postDetails={data}
                 commentsClicked={() => {
                   SetCommentIndex(data.id);
