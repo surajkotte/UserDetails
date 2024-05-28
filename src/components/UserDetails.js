@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import boy from "../Images/boy.avif";
 import boy1 from "../Images/boy1.avif";
 import boy2 from "../Images/boy2.avif";
 import boy3 from "../Images/boy3.jpeg";
 import Button from "@mui/material/Button";
+import Posts from "./Posts";
 const UserDetails = (props) => {
+  const [postsClicked, SetPostsClicked] = useState(false);
   return (
     <div
       className=" flex flex-col items-center h-[300px] w-[350px] border-2 rounded-[20px] justify-center gap-4"
@@ -22,9 +24,24 @@ const UserDetails = (props) => {
         <Button variant="outlined" size="medium" style={{ width: "91px" }}>
           Details
         </Button>
-        <Button variant="outlined" size="medium" style={{ width: "91px" }}>
+        <Button
+          variant="outlined"
+          size="medium"
+          style={{ width: "91px" }}
+          onClick={() => {
+            SetPostsClicked(true);
+          }}
+        >
           Posts
         </Button>
+        {postsClicked && (
+          <Posts userId={props.userinfo.id}
+            closeClicked={() => {
+              console.log("close clicked");  
+              SetPostsClicked(false);
+            }}
+          />
+        )}
       </div>
     </div>
   );

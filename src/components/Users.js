@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import UserDetails from "./UserDetails";
 import UserDetailsShimmer from "./UserDetailsShimmer";
+import Posts from "./Posts";
 const Users = () => {
   const [userDetails, SetUserDetails] = useState();
   const fetchData = async () => {
     const data = await fetch("https://jsonplaceholder.typicode.com/users");
     const jsonData = await data.json();
     SetUserDetails(jsonData);
-    console.log(jsonData);
   };
   useEffect(() => {
     fetchData();
   }, []);
   return (
-    <>
+    <div>
       {userDetails ? (
         <div className=" flex justify-center p-6 flex-wrap gap-3">
           {userDetails.map((data) => {
@@ -27,7 +27,7 @@ const Users = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
